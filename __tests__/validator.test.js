@@ -8,12 +8,10 @@ describe("server", () => {
         const response = await request.get('/person');
         expect(typeof response.body).toEqual('object')
     })
-
     it("should  get status 500", async () => {
         const response = await request.get("/person?name=");
         expect(response.status).toBe(500);
     });
-
     it("should  get status 200", async () => {
         const response = await request.get("/person?name=walid");
         expect(response.status).toBe(200);

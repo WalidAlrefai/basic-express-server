@@ -19,8 +19,7 @@ app.get('/person',validator, (req, res) => {
     res.json({
         name: req.query.name
     }
-
-    )
+)
 })
 
 

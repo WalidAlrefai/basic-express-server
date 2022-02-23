@@ -4,19 +4,19 @@ const supertest = require("supertest");
 const request = supertest(server.app);
 
 describe("server", () => {
-it("should get status 404 for bad method ", async () => {
-    const response = await request.post("/person");
-    expect(response.status).toBe(404);
-});
+    it('test /person', async () => {
+        const response = await request.get('/person');
+        expect(typeof response.body).toEqual('object')
+    })
 
-it("should  get status 500", async () => {
-    const response = await request.get("/person?name=");
-    expect(response.status).toBe(500);
-});
+    it("should  get status 500", async () => {
+        const response = await request.get("/person?name=");
+        expect(response.status).toBe(500);
+    });
 
-it("should  get status 200", async () => {
-    const response = await request.get("/person?name=walid");
-    expect(response.status).toBe(200);
-    expect(response.text).toBe('{"name":"walid"}');
-});
+    it("should  get status 200", async () => {
+        const response = await request.get("/person?name=walid");
+        expect(response.status).toBe(200);
+        expect(response.text).toBe('{"name":"walid"}');
+    });
 });

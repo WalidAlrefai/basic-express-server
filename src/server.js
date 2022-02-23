@@ -13,7 +13,6 @@ app.use(logger);
 app.get('/', (req, res) => {
     res.send('home route')
 })
-
 app.get('/person',validator, (req, res) => {
     console.log(req.query.name)
     res.json({
@@ -21,20 +20,13 @@ app.get('/person',validator, (req, res) => {
     }
 )
 })
-
-
-
 app.use(errorHandler);
 app.use('*', notFound);
-
-
 function start(port) {
     app.listen(port, () => {
         console.log(`running on port ${port}`)
     })
 }
-
-
 module.exports = {
     app: app,
     start: start

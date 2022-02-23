@@ -2,7 +2,7 @@
 
 const { expect } = require('@jest/globals');
 const { afterEach } = require('jest-circus');
-const logger = require('../middleware/logger.js');
+const logger = require('../src/middleware/logger.js');
 
 describe('testing logger middleware',()=>{
 
@@ -15,16 +15,16 @@ describe('testing logger middleware',()=>{
         consoleSpy = jest.spyOn(console,'log').mockImplementation();
     })
 
-    afterAll(()=>{
+    afterEach(()=>{
         consoleSpy.mockRestore();
     })
 
-    it('test log',()=>{
+    it('should log all get requests',()=>{
         logger(req,res,next);
         expect(consoleSpy).toHaveBeenCalled();
     })
     it('test next',()=>{
         logger(req,res,next);
-        expect(next).toHaveBeenCalled();
+        expect(next).toHaveBeenCalledWith();
     })
 })

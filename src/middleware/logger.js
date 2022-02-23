@@ -1,8 +1,8 @@
 'use strict';
 
 const logger = (req,res,next) =>{
-    req.path = 'Razan';
-    req.reqType = req.method;
+    console.log(req.method)
+    console.log(req.path)
     next();
 }
 
